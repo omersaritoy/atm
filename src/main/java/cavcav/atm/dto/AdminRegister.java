@@ -1,0 +1,11 @@
+package cavcav.atm.dto;
+
+import lombok.Data;
+
+@Data
+public class AdminRegister {
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
+}
