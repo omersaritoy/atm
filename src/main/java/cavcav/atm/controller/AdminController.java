@@ -2,8 +2,10 @@ package cavcav.atm.controller;
 
 
 import cavcav.atm.dto.AdminRegister;
+import cavcav.atm.dto.LoginRequest;
 import cavcav.atm.dto.UserResponse;
 import cavcav.atm.service.AdminService;
+import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,10 @@ public class AdminController {
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@RequestBody AdminRegister admin) throws Exception {
         return adminService.registerAdmin(admin);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) throws Exception {
+        return adminService.loginAdmin(request);
     }
 
     @GetMapping
