@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,10 +22,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString
 public class Admin extends BaseEntity {
-
-
-
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Customer> customers;
