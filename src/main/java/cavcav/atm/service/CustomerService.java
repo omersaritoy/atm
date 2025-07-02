@@ -68,6 +68,7 @@ public class CustomerService {
         if(customer == null) {
             throw new UserNotFoundException("Customer could not be found");
         }
+
         Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         if(authentication.isAuthenticated()) {
             String token=jwtService.generateToken(authentication.getName());

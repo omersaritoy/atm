@@ -2,11 +2,15 @@ package cavcav.atm.controller;
 
 
 import cavcav.atm.dto.AdminRegister;
+import cavcav.atm.dto.CustomerResponse;
 import cavcav.atm.dto.LoginRequest;
 import cavcav.atm.dto.UserResponse;
 import cavcav.atm.service.AdminService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Pageable;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin")
@@ -26,9 +30,13 @@ public class AdminController {
         return adminService.loginAdmin(request);
     }
 
-    @GetMapping
-    public String as(){
-        return " asdasd";
+    @GetMapping("/getAllCustomer")
+    public ResponseEntity<List<CustomerResponse>> getAllCustomer() {
+        return adminService.getAllCustomer();
+    }
+    @GetMapping("/getCustomersByAdminId")
+    public ResponseEntity<List<CustomerResponse>> getCustomersByAdminId(@RequestParam Long adminId)  {
+        return adminService.getCustomersByAdminId(adminId);
     }
 
 }
